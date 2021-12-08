@@ -45,6 +45,7 @@ void Filter2D(
 			}
 		}
 	}
+	cout << "Hello" << endl;
 
 	Window2D<FILTER2D_KERNEL_H_SIZE, FILTER2D_KERNEL_V_SIZE, unsigned char> pixelWindow(width, height, stride);
 
@@ -70,7 +71,9 @@ void Filter2D(
 			if(coeffs[0][0]==0)
 			{
 				// Normalize result
+				cout << "Hello" << endl;
 				outpix = (unsigned char)(sum*255/maxi);
+				cout << "Hello" << endl;
 			}
 			else
 			{
