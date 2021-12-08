@@ -67,12 +67,12 @@ void Filter2D(
 			if(coeffs[0][0]==0)
 			{
 				// Normalize result
-				outpix = (sum/maxi)*255;
+				outpix = (unsigned char)(sum*255/maxi);
 			}
 			else
 			{
 				// Normalize result
-				outpix = sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE);
+				outpix = (unsigned char)(sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE));
 			}
 
 			// Write output
