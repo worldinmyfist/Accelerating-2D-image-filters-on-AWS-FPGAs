@@ -76,16 +76,9 @@ void Filter2D(
             }
         }
         U8 outpix;
-        if(coeffs[0][0]==0)
-        {
-            // Normalize result
-            outpix = (U8)(sum*255/maxi);
-        }
-        else
-        {
-            // Normalize result
-            outpix = (U8)(sum/(FILTER_KERNEL_V_SIZE*FILTER_KERNEL_H_SIZE));
-        }
+        // Normalize result
+        outpix = (U8)(sum/(FILTER_KERNEL_V_SIZE*FILTER_KERNEL_H_SIZE));
+        
         // Take care of run-in effect, write output only when the window is valid
         // i.e. if kernel is VxH need at least V/2 rows and H/2 pixels before generating output
         if (pixelWindow.valid()) {
