@@ -315,6 +315,8 @@ auto fpga_end = std::chrono::high_resolution_clock::now();
 
 auto cpu_begin = std::chrono::high_resolution_clock::now();
 
+  cout << "Hello_there" << endl;
+
   #pragma omp parallel for
   for(int xx=0; xx<numRuns; xx++) 
   {
@@ -323,12 +325,20 @@ auto cpu_begin = std::chrono::high_resolution_clock::now();
     Filter2D(filterCoeffs[coeffs], u_src.data(), width, height, stride, u_ref.data());
     Filter2D(filterCoeffs[coeffs], v_src.data(), width, height, stride, v_ref.data());
   }
+  cout << "Hello_there" << endl;
 
 auto cpu_end = std::chrono::high_resolution_clock::now();
 
+  cout << "Hello_there" << endl;
+
   std::string refFileName  = inputImage.substr(0, inputImage.size()-4)+"_ref.bmp";
+
+  cout << "Hello_there" << endl;
   Raw2IplImage(y_ref.data(), stride, u_ref.data(), stride, v_ref.data(), stride, dst);
+
+  cout << "Hello_there" << endl;
   cvConvert( dst, cvCreateMat(height, width, CV_32FC3 ) );
+  cout << "Hello_there" << endl;
   cvSaveImage(refFileName.c_str(), dst);
 
   // Compare results
