@@ -54,7 +54,7 @@ xclbin: ${XCLBIN_FILE}
 build: ${XCLBIN_FILE} ${APP}
 
 F = 0
-I = ./img/test.bmp
+I = ./img/picadilly.bmp
 N = 2
 
 # Execute the accelerated application
