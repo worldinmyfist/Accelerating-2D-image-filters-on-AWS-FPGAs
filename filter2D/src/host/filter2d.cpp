@@ -12,7 +12,7 @@ void Filter2D(
 		unsigned char *dstImg )
 {
 
-	Window2D<FILTER2D_KERNEL_H_SIZE, FILTER2D_KERNEL_V_SIZE, unsigned char> pixelWindow(width, height, stride);
+	Window2D<FILTER2D_KERNEL_H_SIZE, FILTER2D_KERNEL_V_SIZE, unsigned char> pixelWindow1(width, height, stride);
 
     if(coeffs[0][0]==0)
 	{
@@ -22,7 +22,7 @@ void Filter2D(
 			for(int x=0; x<width; ++x)
 			{
 				// Add a new pixel to the linebuffer, generate a new pixel window
-				pixelWindow.next(srcImg, x, y);
+				pixelWindow1.next(srcImg, x, y);
 
 				// Apply 2D filter to the pixel window
 				int sum = 0;
@@ -30,7 +30,7 @@ void Filter2D(
 				{
 					for(int col=0; col<FILTER2D_KERNEL_H_SIZE; col++)
 					{
-						sum += pixelWindow(row,col)*coeffs[row][col];
+						sum += pixelWindow1(row,col)*coeffs[row][col];
 					}
 				}
 				
@@ -45,6 +45,9 @@ void Filter2D(
 			}
 		}
 	}
+
+	Window2D<FILTER2D_KERNEL_H_SIZE, FILTER2D_KERNEL_V_SIZE, unsigned char> pixelWindow(width, height, stride);
+
 	for(int y=0; y<height; ++y)
     {
         for(int x=0; x<width; ++x)

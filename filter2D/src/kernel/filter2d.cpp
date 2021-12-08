@@ -11,9 +11,9 @@ void Filter2D(
 		STREAM_PIXELS& dstImg)
 {
     // Filtering 2D window
-    Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow(width, height);
-    #pragma HLS DEPENDENCE variable=pixelWindow.mLineBuffer inter false
-    #pragma HLS DEPENDENCE variable=pixelWindow.mLineBuffer intra false
+    Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow1(width, height);
+    #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer inter false
+    #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer intra false
 
     // Filtering coefficients
     short coeffs[FILTER_KERNEL_V_SIZE][FILTER_KERNEL_H_SIZE];
@@ -26,11 +26,11 @@ void Filter2D(
     if(coeffs[0][0]==0)
     {
         maxi = 0;
-        filter: while (! pixelWindow.done() ) {
+        filter: while (! pixelWindow1.done() ) {
             #pragma HLS PIPELINE II=1
 
             // Add a new pixel to the linebuffer, generate a new pixel window
-            pixelWindow.next(srcImg);
+            pixelWindow1.next(srcImg);
 
             // Apply 2D filter to the pixel window
             int sum = 0;
@@ -38,7 +38,7 @@ void Filter2D(
             {
                 for(int col=0; col<FILTER_KERNEL_H_SIZE; col++) 
                 {
-                    sum += pixelWindow(row,col)*coeffs[row][col];
+                    sum += pixelWindow1(row,col)*coeffs[row][col];
                 }
             }
 
@@ -53,6 +53,11 @@ void Filter2D(
 
         }
     }
+
+    // Filtering 2D window
+    Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow(width, height);
+    #pragma HLS DEPENDENCE variable=pixelWindow.mLineBuffer inter false
+    #pragma HLS DEPENDENCE variable=pixelWindow.mLineBuffer intra false
 
     // Iterate until all pixels have been processed
     filter: while (! pixelWindow.done() ) {
