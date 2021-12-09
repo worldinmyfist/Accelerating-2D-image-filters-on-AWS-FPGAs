@@ -1,0 +1,74 @@
+===============================================================================
+Version:    v++ v2021.1 (64-bit)
+Build:      SW Build 3246112 on 2021-06-09-14:19:56
+Copyright:  Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+Created:    Wed Dec  8 18:02:29 2021
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             Filter2DKernel.sw_emu
+Target Device:           xilinx:aws-vu9p-f1:shell-v04261818:201920.2
+Target Clock:            250.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name     Type  Target              OpenCL Library         Compute Units
+--------------  ----  ------------------  ---------------------  -------------
+Filter2DKernel  c     fpga0:OCL_REGION_0  Filter2DKernel.sw_emu  1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     Filter2DKernel.sw_emu
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit      Kernel Name     Module Name                                  Target Frequency  Estimated Frequency
+----------------  --------------  -------------------------------------------  ----------------  -------------------
+Filter2DKernel_1  Filter2DKernel  entry_proc                                   250               inf
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_aximm2bytes   250               342.465759
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_bytes2pixels  250               475.5112
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream                        250               342.465759
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_rd_coeffs                  250               342.465759
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_VITIS_LOOP_29_1            250               335.683105
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_filter                     250               342.817963
+Filter2DKernel_1  Filter2DKernel  Filter2D                                     250               335.683105
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_pixels2bytes  250               401.606415
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_bytes2aximm   250               342.465759
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts                        250               342.465759
+Filter2DKernel_1  Filter2DKernel  Filter2DKernel                               250               335.683105
+
+Latency Information
+Compute Unit      Kernel Name     Module Name                                  Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+----------------  --------------  -------------------------------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+Filter2DKernel_1  Filter2DKernel  entry_proc                                   0               0              0             0               0 ns             0 ns            0 ns
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_aximm2bytes   4 ~ 1027        4              undef         1027            16.000 ns        undef           4.108 us
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_bytes2pixels  66 ~ 65538      66             undef         65538           0.264 us         undef           0.262 ms
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream                        1 ~ 71974441    1              undef         71974441        4.000 ns         undef           0.288 sec
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_rd_coeffs                  11              11             11            11              44.000 ns        44.000 ns       44.000 ns
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_VITIS_LOOP_29_1            undef           undef          undef         undef           undef            undef           undef
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_filter                     undef           undef          undef         undef           undef            undef           undef
+Filter2DKernel_1  Filter2DKernel  Filter2D                                     undef           undef          undef         undef           undef            undef           undef
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_pixels2bytes  67 ~ 65539      67             undef         65539           0.268 us         undef           0.262 ms
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_bytes2aximm   4 ~ 1027        4              undef         1027            16.000 ns        undef           4.108 us
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts                        2 ~ 71972282    2              undef         71972282        8.000 ns         undef           0.288 sec
+Filter2DKernel_1  Filter2DKernel  Filter2DKernel                               undef           undef          undef         undef           undef            undef           undef
+
+Area Information
+Compute Unit      Kernel Name     Module Name                                  FF     LUT    DSP  BRAM  URAM
+----------------  --------------  -------------------------------------------  -----  -----  ---  ----  ----
+Filter2DKernel_1  Filter2DKernel  entry_proc                                   130    35     0    0     0
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_aximm2bytes   551    88     0    0     0
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream_Pipeline_bytes2pixels  647    1182   0    0     0
+Filter2DKernel_1  Filter2DKernel  AXIBursts2PixelStream                        1750   2952   0    0     0
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_rd_coeffs                  4108   80     0    0     0
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_VITIS_LOOP_29_1            13175  8531   0    0     0
+Filter2DKernel_1  Filter2DKernel  Filter2D_Pipeline_filter                     13608  8746   0    0     0
+Filter2DKernel_1  Filter2DKernel  Filter2D                                     35022  18162  0    28    0
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_pixels2bytes  1163   1626   0    0     0
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts_Pipeline_bytes2aximm   529    86     0    0     0
+Filter2DKernel_1  Filter2DKernel  PixelStream2AXIBursts                        2266   3413   0    0     0
+Filter2DKernel_1  Filter2DKernel  Filter2DKernel                               42802  28802  0    88    0
+-------------------------------------------------------------------------------
+
+
