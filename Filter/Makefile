@@ -1,7 +1,7 @@
 
 APP          = Filter2D.exe
 KERNEL       = Filter2DKernel
-NKERNEL     ?= 3
+NKERNEL     ?= 1
 TARGET      ?= hw_emu
 PLATFORM    ?= ${AWS_PLATFORM}
 
