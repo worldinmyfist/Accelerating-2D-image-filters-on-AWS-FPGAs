@@ -24,7 +24,7 @@ APP_COMP_OPTIONS  += -I${XILINX_XRT}/include -std=c++14
 APP_LINK_OPTIONS  += -L${XILINX_XRT}/lib/ -lxilinxopencl -lpthread -lrt -lstdc++
 # Addition options for OpenCV library
 APP_COMP_OPTIONS  += -I${XILINX_SDX}/include 
-APP_LINK_OPTIONS  += -fopenmp -Wl,--as-needed -Wl,-rpath,${XILINX_SDX}/lnx64/tools/opencv -L${XILINX_SDX}/lnx64/tools/opencv -lopencv_core -lopencv_highgui 
+APP_LINK_OPTIONS  += -fopenmp -Wl,--as-needed -Wl,-rpath,${XILINX_SDX}/lnx64/tools/opencv -L${XILINX_SDX}/lnx64/tools/opencv -lopencv_core -lopencv_highgui -lopencv_imgproc
 
 # -----------------------------------------------------------------------------
 
