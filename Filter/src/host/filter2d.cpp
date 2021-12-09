@@ -68,14 +68,7 @@ void Filter2D(
 			unsigned char outpix;
 
 			// Normalize result
-			if(coeffs[0][0]==0)
-			{
-				outpix = (unsigned char)(sum*255/maxi);
-			}
-			else
-			{
-				outpix = (unsigned char)(sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE));
-			}
+			outpix = (unsigned char)(sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE));
 
 			// Write output
            	dstImg[y*stride+x] = outpix;
