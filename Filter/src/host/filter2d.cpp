@@ -34,13 +34,13 @@ void Filter2D(
 					}
 				}
 				
-				if(sum>=0 && sum>maxi)
+				if(sum>=0 && (float)(sum-maxi)>0.01f)
 				{
-					maxi = sum;
+					maxi = (int)(sum+1);
 				}
-				else if(sum<0 && (-1*sum)>maxi)
+				else if(sum<0 && (float)((-1*sum)-maxi)>0.01f)
 				{
-					maxi = (-1*sum);
+					maxi = (int)((-1*sum)+1);
 				}
 			}
 		}
@@ -68,8 +68,14 @@ void Filter2D(
 			unsigned char outpix;
 
 			// Normalize result
-			outpix = (unsigned char)(sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE));
-			
+			if(coeffs[0][0]==0)
+			{
+				outpix = (unsigned char)(sum*255/maxi);
+			}
+			else
+			{
+				outpix = (unsigned char)(sum/(FILTER2D_KERNEL_V_SIZE*FILTER2D_KERNEL_H_SIZE));
+			}
 
 			// Write output
            	dstImg[y*stride+x] = outpix;
