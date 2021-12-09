@@ -331,6 +331,8 @@ auto cpu_end = std::chrono::high_resolution_clock::now();
   Raw2IplImage(y_ref.data(), stride, u_ref.data(), stride, v_ref.data(), stride, dst);
   cvConvert( dst, cvCreateMat(height, width, CV_32FC3 ) );
   cvSaveImage(refFileName.c_str(), dst);
+  cvConvert( dst, cvCreateMat(height, width, CV_32FC1 ) );
+  cvSaveImage('gray.bmp', dst);
 
   // Compare results
   bool diff = false;
