@@ -26,7 +26,7 @@ void Filter2D(
     if(coeffs[0][0]==0)
     {
         maxi = 0;
-        filter: while (! pixelWindow1.done() ) {
+        while (! pixelWindow1.done() ) {
             #pragma HLS PIPELINE II=1
 
             // Add a new pixel to the linebuffer, generate a new pixel window
