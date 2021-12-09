@@ -11,9 +11,9 @@ void Filter2D(
 		STREAM_PIXELS& dstImg)
 {
     // Filtering 2D window
-    Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow1(width, height);
-    #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer inter false
-    #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer intra false
+    // Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow1(width, height);
+    // #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer inter false
+    // #pragma HLS DEPENDENCE variable=pixelWindow1.mLineBuffer intra false
 
     // Filtering coefficients
     short coeffs[FILTER_KERNEL_V_SIZE][FILTER_KERNEL_H_SIZE];
@@ -23,36 +23,36 @@ void Filter2D(
     readcoeffs(srcCoeffs, coeffs);
 
     // Find maximum for LoG filter
-    if(coeffs[0][0]==0)
-    {
-        maxi = 0;
-        filter1: while (! pixelWindow1.done() ) {
-            #pragma HLS PIPELINE II=1
+    // if(coeffs[0][0]==0)
+    // {
+    //     maxi = 0;
+    //     filter1: while (! pixelWindow1.done() ) {
+    //         #pragma HLS PIPELINE II=1
 
-            // Add a new pixel to the linebuffer, generate a new pixel window
-            pixelWindow1.next(srcImg);
+    //         // Add a new pixel to the linebuffer, generate a new pixel window
+    //         pixelWindow1.next(srcImg);
 
-            // Apply 2D filter to the pixel window
-            int sum = 0;
-            for(int row=0; row<FILTER_KERNEL_V_SIZE; row++) 
-            {
-                for(int col=0; col<FILTER_KERNEL_H_SIZE; col++) 
-                {
-                    sum += pixelWindow1(row,col)*coeffs[row][col];
-                }
-            }
+    //         // Apply 2D filter to the pixel window
+    //         int sum = 0;
+    //         for(int row=0; row<FILTER_KERNEL_V_SIZE; row++) 
+    //         {
+    //             for(int col=0; col<FILTER_KERNEL_H_SIZE; col++) 
+    //             {
+    //                 sum += pixelWindow1(row,col)*coeffs[row][col];
+    //             }
+    //         }
 
-            if(sum>=0 && (float)(sum-maxi)>0.01f)
-            {
-                maxi = (int)(sum+1);
-            }
-            else if(sum<0 && (float)((-1*sum)-maxi)>0.01f)
-            {
-                maxi = (int)((-1*sum)+1);
-            }
+    //         if(sum>=0 && (float)(sum-maxi)>0.01f)
+    //         {
+    //             maxi = (int)(sum+1);
+    //         }
+    //         else if(sum<0 && (float)((-1*sum)-maxi)>0.01f)
+    //         {
+    //             maxi = (int)((-1*sum)+1);
+    //         }
 
-        }
-    }
+    //     }
+    // }
 
     // Filtering 2D window
     Window2D<MAX_WIDTH, FILTER_KERNEL_V_SIZE, FILTER_KERNEL_H_SIZE, U8> pixelWindow(width, height);
