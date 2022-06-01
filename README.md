@@ -1,4 +1,4 @@
-# Accelerating 2D image filters on AWS FPGA
+# Accelerating 2D image filters on AWS FPGAs
 
 ## HOW TO RUN THE CODE
 ```bash
